@@ -8,10 +8,29 @@ public class RadioTest {
     Radio radio = new Radio();
 
     @Test
+    public void shouldSetNewMaxRadioStation() {
+        Radio radio = new Radio(15);
+        assertEquals(15, radio.getMaxRadioStation());
+    }
+
+    @Test
+    public void shouldIncreaseRadioStationWithNewMax() {
+        Radio radio = new Radio(15);
+        radio.setCurrentRadioStation(11);
+        radio.increaseCurrentRadioStation();
+        assertEquals(12, radio.getCurrentRadioStation());
+    }
+
+    @Test
     public void shouldSetRequiredRadioStation() {
         radio.setCurrentRadioStation(5);
         assertEquals(5, radio.getCurrentRadioStation());
     }
+
+
+
+
+
 
     @Test
     public void shouldNotSetCurrentRadioStationOverLimit() {
@@ -20,6 +39,11 @@ public class RadioTest {
         assertEquals(10, radio.getCurrentRadioStation());
     }
 
+    @Test
+    public void shouldNotSetCurrentRadioStationUnderLimit() {
+        radio.setCurrentRadioStation(-1);
+        assertEquals(0, radio.getCurrentRadioStation());
+    }
 
     @Test
     public void shouldIncreaseCurrentRadioStation() {

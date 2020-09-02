@@ -11,8 +11,8 @@ public class Radio {
     public Radio() {
     }
 
-    public Radio(int currentRadioStation) {
-        this.currentRadioStation = currentRadioStation;
+    public Radio(int maxRadioStation) {
+        this.maxRadioStation = maxRadioStation;
     }
 
     public int getCurrentRadioStation() {
@@ -21,6 +21,11 @@ public class Radio {
 
     public void setCurrentRadioStation(int currentRadioStation) {
         if (currentRadioStation > maxRadioStation) {
+            this.currentRadioStation = maxRadioStation;
+            return;
+        }
+        if (currentRadioStation < minRadioStation) {
+            this.currentRadioStation = minRadioStation;
             return;
         }
         this.currentRadioStation = currentRadioStation;
